@@ -1,0 +1,26 @@
+﻿@model Lesson1.Models.ViewModels.DetailsResort
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Resort/List">Back to Resort list</a>
+<h2>@Model.SelectedResort.ResortName </h2>
+<div>Address: @Model.SelectedResort.address</div>
+<div>Description: @Model.SelectedResort.description</div>
+
+<a href="/Resort/Edit/@Model.SelectedResort.ResortId">Update</a> 
+<a style="color:#ab2020;" href="/Resort/DeleteConfirm/@Model.SelectedResort.ResortId">Delete</a> 
+
+<div>
+    <h2>Trails for @Model.SelectedResort.ResortName:</h2>
+    @foreach (var trail in Model.RelatedTrail)
+    {
+
+        @trail.BeginnerTrails<br />
+        @trail.IntermediateTrails<br />
+        @trail.AdvancedTrails<br />
+        @trail.TerrainPark<br />
+        @trail.TubingPark<br />
+    }
+</div>

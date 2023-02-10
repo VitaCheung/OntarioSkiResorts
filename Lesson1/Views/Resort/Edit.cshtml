@@ -1,0 +1,40 @@
+﻿@model Lesson1.Models.ViewModels.UpdateResort
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form action="/Resort/Update/@Model.SelectedResort.ResortId" method="POST">
+    <div>    
+        <label>Resort Id:</label><input type="number" name="ResortId" value="@Model.SelectedResort.ResortId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="ResortName" value="@Model.SelectedResort.ResortName" />
+    </div>
+    <div>
+        <label>Address:</label> <input type="text" name="address" value="@Model.SelectedResort.address" />
+    </div>
+    <div>
+        <label>Description:</label> <input type="text" name="description" value="@Model.SelectedResort.description" />
+    </div>
+    <div>
+        <label>Number Of Trails Open:</label> <input type="text" name="NumberOfTrailsOpen" value="@Model.SelectedResort.NumberOfTrailsOpen" />
+    </div>
+    <div>
+        <label>Contact:</label> <input type="text" name="Contact" value="@Model.SelectedResort.Contact" />
+    </div>
+    <div>
+        <label>Wheelchair Accessible:</label> <input type="checkbox" name="WheelchairAccessible"  value="@Model.SelectedResort.WheelchairAccessible"/>
+    </div>
+    <div>
+        <label>Number Of Restaurants:</label> <input type="number" name="NumberOfRestaurants" value="@Model.SelectedResort.NumberOfRestaurants" />
+    </div>
+    <div>
+        <input type="submit" value="Update Resort" />
+    </div>
+
+
+
+</form>

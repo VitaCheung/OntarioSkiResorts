@@ -1,0 +1,20 @@
+﻿@model Lesson1.Models.PriceDto
+@{
+    ViewBag.Title = "View Detail";
+}
+
+<h2>Details</h2>
+
+<a href="/Price/List">Back to Price list</a>
+<h2>@Model.PriceId  Resort no:@Model.ResortId</h2>
+
+<div>DAY 1 Hour: @Model.DAY1Hour</div>
+<div>DAY 2 Hours: @Model.DAY2Hours</div>
+<div>DAY 3 Hours: @Model.DAY3Hours</div>
+<div>DAY 4 Hours: @Model.DAY4Hours</div>
+
+<div>NIGHT 1 Hour: @Model.NIGHT1Hour</div>
+<div>NIGHT 2 Hours: @Model.NIGHT2Hours</div>
+<div>NIGHT 3 Hours: @Model.NIGHT3Hours</div>
+<div>NIGHT 4 Hours: @Model.NIGHT4Hours</div>
+

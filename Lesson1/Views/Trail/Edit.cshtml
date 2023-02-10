@@ -1,0 +1,46 @@
+﻿@model Lesson1.Models.ViewModels.UpdateTrail
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Trails</h2>
+<form action="/Trail/Update/@Model.SelectedTrail.TrailId" method="POST">
+    <div>
+        <label>Resorts:</label>
+        <select name="ResortId">
+            @foreach (var resort in Model.ResortOptions)
+            {
+                <option value="@resort.ResortId">@resort.ResortName</option>
+            }
+        </select>
+
+    </div>
+    <div>
+        <label>TrailId:</label> <input type="number" name="TrailId" />
+    </div>
+    <div>
+        <label>ResortId:</label> <input type="number" name="ResortId" />
+    </div>
+    <div>
+        <label>Beginner Trails:</label> <input type="number" name="BeginnerTrails" />
+    </div>
+    <div>
+        <label>Intermediate Trails:</label> <input type="number" name="IntermediateTrails" />
+    </div>
+    <div>
+        <label>Advanced Trails:</label> <input type="number" name="AdvancedTrails" />
+    </div>
+    <div>
+        <label>Terrain Parks:</label> <input type="number" name="TerrainPark" />
+    </div>
+    <div>
+        <label>Tubing Parks:</label> <input type="number" name="TubingPark" />
+    </div>
+
+    <div>
+        <input type="submit" value="Add New Trail" />
+    </div>
+
+</form>
+

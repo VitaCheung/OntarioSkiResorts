@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Lesson1.Models.TrailDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@foreach (var trail in Model)
+{
+    <h2><a href="/Trail/Details/@trail.TrailId">@trail.TrailId</a></h2>
+    <div>Beginner Trails: @trail.BeginnerTrails</div>
+    <div>Intermediate Trails: @trail.IntermediateTrails</div>
+    <div>Advanced Trails: @trail.AdvancedTrails</div>
+    <div>Terrain Parks: @trail.TerrainPark</div>
+    <div>Tubing Parks: @trail.TubingPark</div>
+
+}
+

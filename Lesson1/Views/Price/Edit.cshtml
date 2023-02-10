@@ -1,0 +1,46 @@
+﻿@model Lesson1.Models.PriceDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<form action="/Price/Update/@Model.PriceId" method="POST">
+
+    <div>
+        <label>PriceId:</label> <input type="number" name="PriceId" value="@Model.PriceId"/>
+    </div>
+    <div>
+        <label>ResortId:</label> <input type="number" name="ResortId" value="@Model.ResortId"/>
+    </div>
+    <div>
+        <label>DAY 1 hour:</label> <input type="number" name="DAY1Hour" value="@Model.DAY1Hour"/>
+    </div>
+    <div>
+        <label>DAY 2 hours:</label> <input type="number" name="DAY2Hours" value="@Model.DAY2Hours"/>
+    </div>
+    <div>
+        <label>DAY 3 hours:</label> <input type="number" name="DAY3Hours" value="@Model.DAY3Hours"/>
+    </div>
+    <div>
+        <label>DAY 4 hours:</label> <input type="number" name="DAY4Hours" value="@Model.DAY4Hours"/>
+    </div>
+    <div>
+        <label>NIGHT 1 hour:</label> <input type="number" name="NIGHT1Hour" value="@Model.NIGHT1Hour"/>
+    </div>
+    <div>
+        <label>NIGHT 2 hours:</label> <input type="number" name="NIGHT2Hours" value="@Model.NIGHT2Hours"/>
+    </div>
+    <div>
+        <label>NIGHT 3 hours:</label> <input type="number" name="NIGHT3Hours" value="@Model.NIGHT3Hours"/>
+    </div>
+    <div>
+        <label>NIGHT 4 hours:</label> <input type="number" name="NIGHT4Hours" value="@Model.NIGHT4Hours"/>
+    </div>
+
+    <div>
+        <input type="submit" value="Update Price" />
+    </div>
+
+</form>
+
+

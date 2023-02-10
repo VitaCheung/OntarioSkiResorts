@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Lesson1.Models.ResortDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<a href="/Resort/New">New Resort</a>
+@foreach(var resort in Model)
+            {
+                <h2><a href="/Resort/Details/@resort.ResortId">@resort.ResortName</a></h2>
+                <div>Address: @resort.address</div>
+                <div>Description: @resort.description</div>
+
+            }
+

@@ -1,0 +1,35 @@
+﻿@model Lesson1.Models.TrailDto
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>New trail input</h2>
+<form action="/Trail/Create" method="POST">
+    <div>
+        <label>TrailId:</label> <input type="number" name="TrailId" />
+    </div>
+    <div>
+        <label>ResortId:</label> <input type="number" name="ResortId" />
+    </div>
+    <div>
+        <label>Beginner Trails:</label> <input type="number" name="BeginnerTrails" />
+    </div>
+    <div>
+        <label>Intermediate Trails:</label> <input type="number" name="IntermediateTrails" />
+    </div>
+    <div>
+        <label>Advanced Trails:</label> <input type="number" name="AdvancedTrails" />
+    </div>
+    <div>
+        <label>Terrain Parks:</label> <input type="number" name="TerrainPark" />
+    </div>
+    <div>
+        <label>Tubing Parks:</label> <input type="number" name="TubingPark" />
+    </div>
+
+    <div>
+        <input type="submit" value="Add New Trail" />
+    </div>
+
+</form>
+

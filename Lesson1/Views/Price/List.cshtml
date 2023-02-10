@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Lesson1.Models.PriceDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Price List</h2>
+
+@foreach (var price in Model)
+{
+    <h2><a href="/Price/Details/@price.PriceId">@price.PriceId</a></h2>
+    <div>DAY 1 Hour: @price.DAY1Hour</div>
+    <div>DAY 2 Hours: @price.DAY2Hours</div>
+    <div>DAY 3 Hours: @price.DAY3Hours</div>
+    <div>DAY 4 Hours: @price.DAY4Hours</div>
+
+    <div>NIGHT 1 Hour: @price.NIGHT1Hour</div>
+    <div>NIGHT 2 Hours: @price.NIGHT2Hours</div>
+    <div>NIGHT 3 Hours: @price.NIGHT3Hours</div>
+    <div>NIGHT 4 Hours: @price.NIGHT4Hours</div>
+
+}
+
