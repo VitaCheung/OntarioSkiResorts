@@ -10,7 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Diagnostics;
 using Lesson1.Models;
-using Trail = Lesson1.Models.Trail;
+using System.Diagnostics;
 
 namespace Lesson1.Controllers
 {
