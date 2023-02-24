@@ -335,6 +335,10 @@ fieldset[disabled] .btn-danger.active {
   background-repeat: repeat-x;
   background-color: #2e6da4;
 }
+.navbar-header {
+    background-color: #3a0ca3;
+}
+
 .navbar-default {
   background-image: -webkit-linear-gradient(top, #ffffff 0%, #f8f8f8 100%);
   background-image: -o-linear-gradient(top, #ffffff 0%, #f8f8f8 100%);

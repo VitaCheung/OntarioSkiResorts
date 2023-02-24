@@ -189,7 +189,7 @@
     <Compile Include="Controllers\ResortController.cs" />
     <Compile Include="Controllers\ResortDataController.cs" />
     <Compile Include="Controllers\TrailController.cs" />
-    <Compile Include="Controllers\TrailDataController.cs" />
+    <Compile Include="Controllers\TrailDataController2.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +231,7 @@
     <Compile Include="Models\ViewModels\DetailsPrice.cs" />
     <Compile Include="Models\ViewModels\DetailsResort.cs" />
     <Compile Include="Models\ViewModels\DetailsTrail.cs" />
+    <Compile Include="Models\ViewModels\UpdatePrice.cs" />
     <Compile Include="Models\ViewModels\UpdateResort.cs" />
     <Compile Include="Models\ViewModels\UpdateTrail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -241,6 +242,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\cover.jpg" />
+    <Content Include="Content\img\family.jpg" />
+    <Content Include="Content\img\night-skiing.jpg" />
+    <Content Include="Content\img\resort.jpg" />
+    <Content Include="Content\img\SkiHills.jpg" />
+    <Content Include="Content\img\trail.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -301,7 +308,7 @@
     <Content Include="Views\Resort\Details.cshtml" />
     <Content Include="Views\Resort\New.cshtml" />
     <Content Include="Views\Resort\Error.cshtml" />
-    <Content Include="Views\Resort\Delete.cshtml" />
+    <Content Include="Views\Resort\DeleteConfirm.cshtml" />
     <Content Include="Views\Price\List.cshtml" />
     <Content Include="Views\Trail\List.cshtml" />
     <Content Include="Views\Price\New.cshtml" />
@@ -313,6 +320,8 @@
     <Content Include="Views\Resort\Edit.cshtml" />
     <Content Include="Views\Trail\Edit.cshtml" />
     <Content Include="Views\Price\Edit.cshtml" />
+    <Content Include="Views\Price\DeleteConfirm.cshtml" />
+    <Content Include="Views\Trail\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

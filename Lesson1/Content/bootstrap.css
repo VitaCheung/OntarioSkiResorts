@@ -244,6 +244,10 @@ th {
   .navbar {
     display: none;
   }
+  .navbar-header {
+     background-color: #3a0ca3;
+  }
+
   .btn > .caret,
   .dropup > .btn > .caret {
     border-top-color: #000 !important;
@@ -4668,7 +4672,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: #222;
   border-color: #080808;
 }
-.navbar-inverse .navbar-brand {
+.navbar-inverse  {
   color: #9d9d9d;
 }
 .navbar-inverse .navbar-brand:hover,
@@ -5032,11 +5036,12 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  color: inherit;
-  background-color: #eeeeee;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background: url("img/SkiHills.jpg");
+    background-size: cover;
 }
 .jumbotron h1,
 .jumbotron .h1 {

@@ -3,13 +3,19 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
-<a href="/Resort/New">New Resort</a>
+<h1>Resort List</h1>
+<p>Click into the resort to read more details!</p>
+<a class="add_btn" href="/Resort/New">Add New Resort</a>
+
+<div class="pic1">
+    
+</div>
+
 @foreach(var resort in Model)
             {
                 <h2><a href="/Resort/Details/@resort.ResortId">@resort.ResortName</a></h2>
-                <div>Address: @resort.address</div>
-                <div>Description: @resort.description</div>
+                <div><b>Address:</b> @resort.address</div>
+                <div><b>Description:</b> @resort.description</div>
 
             }
 

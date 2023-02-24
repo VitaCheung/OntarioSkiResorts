@@ -8,6 +8,7 @@ namespace Lesson1.Models.ViewModels
     public class DetailsTrail
     {
         public TrailDto SelectedTrail { get; set; }
-        public IEnumerable<ResortDto> RelatedResort { get; set; }  
+
+        public ResortDto RelatedResort { get; set; }  
     }
 }

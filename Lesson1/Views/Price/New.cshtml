@@ -1,40 +1,47 @@
-﻿
+﻿@model IEnumerable<Lesson1.Models.ResortDto>
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>New Price</h2>
+<h1><a class="back_btn" href="/Price/List"><< </a></h1>
+<h2>Create new price information</h2>
+
 <form action="/Price/Create" method="POST">
-    
     <div>
-        <label>PriceId:</label> <input type="number" name="PriceId" />
+        <label>Resort:</label>
+        <select name="ResortId">
+            @foreach (var resort in Model)
+            {
+                
+                <option value="@resort.ResortId">@resort.ResortName</option>
+            }
+        </select>
+
+    </div>
+   
+    <div>
+        <label>DAY 1 hour:</label> <input type="number" step="0.01" name="DAY1Hour" />
     </div>
     <div>
-        <label>ResortId:</label> <input type="number" name="ResortId" />
+        <label>DAY 2 hours:</label> <input type="number" step="0.01" name="DAY2Hours" />
     </div>
     <div>
-        <label>DAY 1 hour:</label> <input type="number" name="DAY1Hour" />
+        <label>DAY 3 hours:</label> <input type="number" step="0.01" name="DAY3Hours" />
     </div>
     <div>
-        <label>DAY 2 hours:</label> <input type="number" name="DAY2Hours" />
+        <label>DAY 4 hours:</label> <input type="number" step="0.01" name="DAY4Hours" />
     </div>
     <div>
-        <label>DAY 3 hours:</label> <input type="number" name="DAY3Hours" />
+        <label>NIGHT 1 hour:</label> <input type="number" step="0.01" name="NIGHT1Hour" />
     </div>
     <div>
-        <label>DAY 4 hours:</label> <input type="number" name="DAY4Hours" />
+        <label>NIGHT 2 hours:</label> <input type="number" step="0.01" name="NIGHT2Hours" />
     </div>
     <div>
-        <label>NIGHT 1 hour:</label> <input type="number" name="NIGHT1Hour" />
+        <label>NIGHT 3 hours:</label> <input type="number" step="0.01" name="NIGHT3Hours" />
     </div>
     <div>
-        <label>NIGHT 2 hours:</label> <input type="number" name="NIGHT2Hours" />
-    </div>
-    <div>
-        <label>NIGHT 3 hours:</label> <input type="number" name="NIGHT3Hours" />
-    </div>
-    <div>
-        <label>NIGHT 4 hours:</label> <input type="number" name="NIGHT4Hours" />
+        <label>NIGHT 4 hours:</label> <input type="number" step="0.01" name="NIGHT4Hours" />
     </div>
 
     <div>

@@ -17,10 +17,10 @@ namespace Lesson1.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public int ResortId { get; private set; }
-        public string ResortName { get; private set; }
-        public string address { get; private set; }
-        public string description { get; private set; }
+        //public int ResortId { get; private set; }
+        //public string ResortName { get; private set; }
+        //public string address { get; private set; }
+        //public string description { get; private set; }
 
         // GET: api/ResortData/ListResorts
         [HttpGet]
@@ -35,46 +35,33 @@ namespace Lesson1.Controllers
                 ResortId = a.ResortId,
                 ResortName = a.ResortName,
                 address = a.address,
-                description = a.description
+                description = a.description,
+                NumberOfTrailsOpen = a.NumberOfTrailsOpen,
+                Contact = a.Contact,
+                WheelchairAccessible = a.WheelchairAccessible,
+                NumberOfRestaurants = a.NumberOfRestaurants
+
             }));
             return Ok(ResortDtos);
         }
 
-        /// <summary>
-        /// Gather information about resort related to a specific trailId
-        /// </summary>
-        /// <returns>
-        /// GET: api/ResortData/ListResortForTrail/9
-        /// </returns>
-        [HttpGet]
-        [ResponseType(typeof(ResortDto))]
-        public IHttpActionResult ListResortForTrail(int id)
-        {
-            List<Resort> Resorts = db.Resorts.Where(a=>a.ResortId==id).ToList();
-            List<ResortDto> ResortDtos = new List<ResortDto>();
-
-            Resorts.ForEach(a => ResortDtos.Add(new ResortDto()
-            {
-                ResortId = a.ResortId,
-                ResortName = a.ResortName,
-                address = a.address,
-                description = a.description
-            }));
-            return Ok(ResortDtos);
-        }
 
         // GET: api/ResortData/FindResort/5 
-        [ResponseType(typeof(Resort))]
+        [ResponseType(typeof(ResortDto))]
         [HttpGet]
         public IHttpActionResult FindResort(int id)
         {
             Resort Resort = db.Resorts.Find(id);
-            ResortDto ResortDto = new ResortDto();
+            ResortDto ResortDto = new ResortDto()
             {
-                ResortId = Resort.ResortId;
-                ResortName = Resort.ResortName;
-                address = Resort.address;
-                description = Resort.description;
+                ResortId = Resort.ResortId,
+                ResortName = Resort.ResortName,
+                address = Resort.address,
+                description = Resort.description,
+                NumberOfTrailsOpen = Resort.NumberOfTrailsOpen,
+                Contact = Resort.Contact,
+                WheelchairAccessible = Resort.WheelchairAccessible,
+                NumberOfRestaurants = Resort.NumberOfRestaurants
 
             };
             if (Resort == null)
@@ -82,7 +69,7 @@ namespace Lesson1.Controllers
                 return NotFound();
             }
 
-            return Ok(Resort);
+            return Ok(ResortDto);
         }
 
         // POST: api/ResortData/UpdateResort/5
@@ -152,7 +139,7 @@ namespace Lesson1.Controllers
             db.Resorts.Remove(resort);
             db.SaveChanges();
 
-            return Ok(resort);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

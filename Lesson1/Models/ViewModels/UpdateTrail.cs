@@ -10,5 +10,6 @@ namespace Lesson1.Models.ViewModels
         public TrailDto SelectedTrail { get; set; }
 
         public IEnumerable<ResortDto> ResortOptions { get; set; }
+        //public ResortDto RelatedResort { get; set; }
     }
 }

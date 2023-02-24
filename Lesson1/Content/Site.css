@@ -1,12 +1,31 @@
-﻿body {
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-weight:500;
     padding-top: 50px;
     padding-bottom: 20px;
+    /*background-color: #3a0ca3;*/
+    background: linear-gradient(rgba(0, 9, 186, 0.642), rgba(0, 0, 0, 0.705)), url("img/night-skiing.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    color: white;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    
+}
+
+.navbar-brand {
+    font-weight:600;
+    color:white;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -25,6 +44,155 @@ textarea {
 
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-    background-color: #777;
+    
+    background-color: #777; 
     border-color: #fff
+}
+
+.navbar-inverse {
+    background-color: #03045e;
+    border-color: #080808;
+}
+
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background: url("img/cover.jpg");
+    background-size: cover;
+}
+.jumbotron h1, .jumbotron p {
+        color: white;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.btn-default {
+    color: white;
+    background-color: #3a0ca3;
+    border-color: #ccc;
+}
+
+.pic1 {
+    width:70%;
+    height:250px;
+    padding-top: 30px 15px 30px 15px;
+    border-radius: 6px;
+    background: url("img/resort.jpg") center;
+    background-size: cover;
+}
+.pic2 {
+    width: 70%;
+    height: 250px;
+    padding-top: 30px 15px 30px 15px;
+    border-radius: 6px;
+    background: url("img/family.jpg") center;
+    background-size: cover;
+}
+.pic3 {
+    width: 70%;
+    height: 250px;
+    padding-top: 30px 15px 30px 15px;
+    border-radius: 6px;
+    background: url("img/trail.jpg") center;
+    background-size: cover;
+}
+
+h2 a {
+    color: #4cc9f0;
+}
+
+h2 a:hover {
+    color: #f72585;
+}
+
+.add_btn {
+    color: #c77dff;
+}
+.add_btn:hover {
+    color: #f72585;
+}
+
+.back_btn {
+    color: #caf0f8;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.back_btn:hover {
+    color: #f72585;
+    text-decoration: none;
+}
+
+.details_btn {
+    color: white;
+    padding: 0.25em 1em;
+    margin: auto;
+    background-color: #4361ee;
+    border-radius: 6px;
+    line-height: 3em;
+}
+.details_btn:hover {
+    color:white;
+    background-color: #3a0ca3;
+    text-decoration: none;
+}
+
+form select {
+    color: #080808;
+}
+input, .submit_btn {
+    color: #080808;
+}
+
+.update_btn, .delete_btn {
+    font-weight: 600;
+    line-height:3em;
+    /*border: 1px solid white;*/
+    padding: 0.25em 1em;
+    background-color: aliceblue;
+    margin:15px 2px 5px 2px;
+}
+.box{
+    display: flex;
+}
+.cancel_btn, .cancel_btn:hover {
+    color: white;
+    font-size: 1.5em;
+    padding: 0.25em 1em;
+    margin: auto;
+    background-color: #4361ee;
+    border-radius: 6px;
+    border: 1px solid white;
+    text-decoration:none;
+}
+.confirm_btn {
+    color: white;
+    font-size: 1.5em;
+    padding: 0.25em 1em;
+    margin: auto;
+    background-color: #f72585;
+    border-radius: 6px;
+    border:1px solid white;
+}
+
+#pricelist th, #pricelist td{
+    padding:0.25em 1em;
+}
+
+#PriceTb {
+    padding: 3em;
+}
+#PriceTb th, #PriceTb td {
+    padding: 1em;
+    border-bottom: 2px solid white;
+}
+
+#container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+}
+.ResortTrail {
+    border: white solid 1px;
+    padding: 30px;
+    width: 85%;
+    margin: 1.5em 1.5em 0 0;
+    
 }

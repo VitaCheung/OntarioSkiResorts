@@ -1,24 +1,20 @@
 ﻿@model Lesson1.Models.ViewModels.DetailsTrail
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "View Detail";
 }
 
-<h2>Details</h2>
-<a href="/Trail/List">Back to Trail list</a>
-<h2>@Model.SelectedTrail.ResortId </h2>
+<h1><a class="back_btn" href="/Trail/List"><< </a></h1>
+<h2>Trail Details</h2>
 
-<div>Beginner Trails: @Model.SelectedTrail.BeginnerTrails</div>
-<div>Intermediate Trails: @Model.SelectedTrail.IntermediateTrails</div>
-<div>Advanced Trails: @Model.SelectedTrail.AdvancedTrails</div>
-<div>Terrain Parks: @Model.SelectedTrail.TerrainPark</div>
-<div>Tubing Parks: @Model.SelectedTrail.TubingPark</div>
+<h2><a href="/Resort/Details/@Model.SelectedTrail.ResortId"> @Model.SelectedTrail.ResortName</a> </h2>
+
+<div>Beginner Trails: @Model.SelectedTrail.BeginnerTrails </div>
+<div>Intermediate Trails: @Model.SelectedTrail.IntermediateTrails </div>
+<div>Advanced Trails: @Model.SelectedTrail.AdvancedTrails </div>
+<div>Terrain Parks: @Model.SelectedTrail.TerrainPark </div>
+<div>Tubing Parks: @Model.SelectedTrail.TubingPark </div>
+
+<a class="update_btn" href="/Trail/Edit/@Model.SelectedTrail.TrailId">Update </a>
+<a class="delete_btn" style="color:#ab2020;" href="/Trail/DeleteConfirm/@Model.SelectedTrail.TrailId">Delete</a>
 
 
-<div>
-    <h3>related to these trails</h3>
-    @foreach (var resort in Model.RelatedResort)
-    {
-        <a href="/Resort/Details/@resort.ResortId">@resort.ResortName</a>
-
-    }
-</div>

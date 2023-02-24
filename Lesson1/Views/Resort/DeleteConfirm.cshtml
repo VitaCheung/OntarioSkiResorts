@@ -1,0 +1,18 @@
+﻿@model Lesson1.Models.ResortDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this resort?</h2>
+
+<h2>@Model.ResortName</h2>
+
+
+<div class="box">
+    <a class="cancel_btn" href="/Resort/List">Cancel</a>
+
+    <form action="/Resort/Delete/@Model.ResortId" method="POST">
+        <input type="submit" class="confirm_btn" value="Confirm Delete" />
+
+    </form>
+</div>

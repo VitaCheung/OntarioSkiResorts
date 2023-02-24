@@ -3,20 +3,44 @@
     ViewBag.Title = "List";
 }
 
-<h2>Price List</h2>
+<h1>Price List</h1>
+<a class="add_btn" href="/Price/New">Add New Price information</a>
 
-@foreach (var price in Model)
-{
-    <h2><a href="/Price/Details/@price.PriceId">@price.PriceId</a></h2>
-    <div>DAY 1 Hour: @price.DAY1Hour</div>
-    <div>DAY 2 Hours: @price.DAY2Hours</div>
-    <div>DAY 3 Hours: @price.DAY3Hours</div>
-    <div>DAY 4 Hours: @price.DAY4Hours</div>
+<div class="pic2">
 
-    <div>NIGHT 1 Hour: @price.NIGHT1Hour</div>
-    <div>NIGHT 2 Hours: @price.NIGHT2Hours</div>
-    <div>NIGHT 3 Hours: @price.NIGHT3Hours</div>
-    <div>NIGHT 4 Hours: @price.NIGHT4Hours</div>
+</div>
+<p>This price list is showing the Regular Lift Ticket for Adult (CAD PLUS 13% HST) in 2023. It is not available if 0.00 is shown.</p>
 
-}
+<table id="PriceTb">
+        <tr>
+            <th>Resort</th>
+            <th>DAY 1 Hour:</th>
+            <th>DAY 2 Hours:</th>
+            <th>DAY 3 Hours:</th>
+            <th>DAY 4 Hours:</th>
+            <th>NIGHT 1 Hour:</th>
+            <th>NIGHT 2 Hours:</th>
+            <th>NIGHT 3 Hours:</th>
+            <th>NIGHT 4 Hours:</th>
+            <th>More</th>
+        </tr>
+    @foreach (var Price in Model)
+    {
 
+        <tr>
+            <td>@Price.ResortName</td>
+            <td>@Price.DAY1Hour</td>
+            <td>@Price.DAY2Hours</td>
+            <td>@Price.DAY3Hours</td>
+            <td>@Price.DAY4Hours</td>
+            <td>@Price.NIGHT1Hour</td>
+            <td>@Price.NIGHT2Hours</td>
+            <td>@Price.NIGHT3Hours</td>
+            <td>@Price.NIGHT4Hours</td>
+            <td><a class="details_btn" href="/Price/Details/@Price.PriceId"> Details </a></td>
+        </tr>
+
+    }
+
+</table>
+<p>Note: Pricing above is subject to change and is based on resort ticket window prices published on resorts website. Use for reference only.</p>

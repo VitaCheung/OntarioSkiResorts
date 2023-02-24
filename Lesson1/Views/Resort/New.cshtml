@@ -2,12 +2,12 @@
 @{
     ViewBag.Title = "Create";
 }
-
+<h1><a class="back_btn" href="/Resort/List"><< </a></h1>
 <h2>Create Resort</h2>
+
+
 <form action="/Resort/Create" method="POST">
-    <div>
-        <label>Id:</label> <input type="number" name="ResortId" />
-    </div>
+    
     <div>
         <label>Name:</label> <input type="text" name="ResortName" />
     </div>
@@ -24,7 +24,7 @@
         <label>Contact:</label> <input type="text" name="Contact" />
     </div>
     <div>
-        <label>Wheelchair Accessible:</label> <input type="checkbox" name="WheelchairAccessible" />
+        <label>Wheelchair Accessible:</label> <input type="checkbox" name="WheelchairAccessible" value="true" />
     </div>
     <div>
         <label>Number Of Restaurants:</label> <input type="number" name="NumberOfRestaurants" />

@@ -1,20 +1,28 @@
-﻿@model Lesson1.Models.PriceDto
+﻿@model Lesson1.Models.ViewModels.DetailsPrice
 @{
     ViewBag.Title = "View Detail";
 }
 
-<h2>Details</h2>
+<h1><a class="back_btn" href="/Price/List"><< </a></h1>
+<h2>Price Details</h2>
 
-<a href="/Price/List">Back to Price list</a>
-<h2>@Model.PriceId  Resort no:@Model.ResortId</h2>
 
-<div>DAY 1 Hour: @Model.DAY1Hour</div>
-<div>DAY 2 Hours: @Model.DAY2Hours</div>
-<div>DAY 3 Hours: @Model.DAY3Hours</div>
-<div>DAY 4 Hours: @Model.DAY4Hours</div>
 
-<div>NIGHT 1 Hour: @Model.NIGHT1Hour</div>
-<div>NIGHT 2 Hours: @Model.NIGHT2Hours</div>
-<div>NIGHT 3 Hours: @Model.NIGHT3Hours</div>
-<div>NIGHT 4 Hours: @Model.NIGHT4Hours</div>
+<h2><a href="/Resort/Details/@Model.SelectedPrice.ResortId"> @Model.SelectedPrice.ResortName</a> </h2>
+<p>This price list is showing the Regular Lift Ticket for Adult (PLUS 13% HST) in 2023.</p>
+
+<div>DAY 1 Hour: @Model.SelectedPrice.DAY1Hour</div>
+<div>DAY 2 Hours: @Model.SelectedPrice.DAY2Hours</div>
+<div>DAY 3 Hours: @Model.SelectedPrice.DAY3Hours</div>
+<div>DAY 4 Hours: @Model.SelectedPrice.DAY4Hours</div>
+
+<div>NIGHT 1 Hour: @Model.SelectedPrice.NIGHT1Hour</div>
+<div>NIGHT 2 Hours: @Model.SelectedPrice.NIGHT2Hours</div>
+<div>NIGHT 3 Hours: @Model.SelectedPrice.NIGHT3Hours</div>
+<div>NIGHT 4 Hours: @Model.SelectedPrice.NIGHT4Hours</div>
+
+<a class="update_btn" href="/Price/Edit/@Model.SelectedPrice.PriceId">Update</a></li>
+<a class="delete_btn "style="color:#ab2020;" href="/Price/DeleteConfirm/@Model.SelectedPrice.PriceId">Delete</a>
+
+
 

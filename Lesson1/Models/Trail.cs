@@ -23,19 +23,22 @@ namespace Lesson1.Models
         public int AdvancedTrails { get; set; }
         public int TerrainPark { get; set; }
         public int TubingPark { get; set; }
-        public object Resorts { get; internal set; }
+       
     }
 
     public class TrailDto
     { 
         public int TrailId { get; set; }
-  
-        public int ResortId { get; set; }       
+
+        public int ResortId { get; set; }
+
+        public string ResortName { get; set; }
 
         public int BeginnerTrails { get; set; }
         public int IntermediateTrails { get; set; }
         public int AdvancedTrails { get; set; }
         public int TerrainPark { get; set; }
         public int TubingPark { get; set; }
+        
     }
 }

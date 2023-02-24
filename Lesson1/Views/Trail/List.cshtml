@@ -3,16 +3,26 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h1>Trail List</h1>
+<a class="add_btn" href="/Trail/New">Add New Trail information</a>
+<div class="pic3"></div>
 
-@foreach (var trail in Model)
-{
-    <h2><a href="/Trail/Details/@trail.TrailId">@trail.TrailId</a></h2>
-    <div>Beginner Trails: @trail.BeginnerTrails</div>
-    <div>Intermediate Trails: @trail.IntermediateTrails</div>
-    <div>Advanced Trails: @trail.AdvancedTrails</div>
-    <div>Terrain Parks: @trail.TerrainPark</div>
-    <div>Tubing Parks: @trail.TubingPark</div>
+<div id="container">
+    @foreach (var Trail in Model)
+    {<div class="ResortTrail">
 
-}
+        <h2>@Trail.ResortName</h2>
+        <p>Resort Id: @Trail.ResortId </p>
+
+        <div>Beginner Trails: @Trail.BeginnerTrails</div>
+        <div>Intermediate Trails: @Trail.IntermediateTrails</div>
+        <div>Advanced Trails: @Trail.AdvancedTrails</div>
+        <div>Terrain Parks: @Trail.TerrainPark</div>
+        <div>Tubing Parks: @Trail.TubingPark</div>
+
+        <a class="details_btn" href="/Trail/Details/@Trail.TrailId"> Details </a>
+     </div>
+    }
+
+</div>
 

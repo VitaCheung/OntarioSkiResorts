@@ -5,9 +5,11 @@ using System.Web;
 
 namespace Lesson1.Models.ViewModels
 {
-    public class DetailsPrice
+    public class UpdatePrice
     {
         public PriceDto SelectedPrice { get; set; }
-        public ResortDto RelatedResort { get; set; }
+
+        public IEnumerable<ResortDto> ResortOptions { get; set; }
+        //public ResortDto RelatedResort { get; set; }
     }
 }

@@ -35,6 +35,8 @@ namespace Lesson1.Models
         
         public int PriceId { get; set; }       
         public int ResortId { get; set; }     
+
+        public string ResortName { get; set; }
         public decimal DAY1Hour { get; set; }
         public decimal DAY2Hours { get; set; }
         public decimal DAY3Hours { get; set; }

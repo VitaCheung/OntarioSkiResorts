@@ -1,16 +1,25 @@
-﻿@model Lesson1.Models.TrailDto
+﻿@model IEnumerable<Lesson1.Models.ResortDto>
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>New trail input</h2>
+<h1><a class="back_btn" href="/Trail/List"><< </a></h1>
+<h2>Create new trail information</h2>
+
+
 <form action="/Trail/Create" method="POST">
     <div>
-        <label>TrailId:</label> <input type="number" name="TrailId" />
+        <label>Resort:</label>
+        <select name="ResortId">
+            @foreach (var resort in Model)
+            {
+                <option value="@resort.ResortId">@resort.ResortName</option>
+
+            }
+        </select>
     </div>
-    <div>
-        <label>ResortId:</label> <input type="number" name="ResortId" />
-    </div>
+    
+   
     <div>
         <label>Beginner Trails:</label> <input type="number" name="BeginnerTrails" />
     </div>

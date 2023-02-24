@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<h1><a class="back_btn" href="/Resort/List"><< </a></h1>
 <h2>Edit</h2>
 
 <form action="/Resort/Update/@Model.SelectedResort.ResortId" method="POST">
@@ -26,13 +26,13 @@
         <label>Contact:</label> <input type="text" name="Contact" value="@Model.SelectedResort.Contact" />
     </div>
     <div>
-        <label>Wheelchair Accessible:</label> <input type="checkbox" name="WheelchairAccessible"  value="@Model.SelectedResort.WheelchairAccessible"/>
+        <label>Wheelchair Accessible:</label> <input type="checkbox" name="WheelchairAccessible"  value="true"/>
     </div>
     <div>
         <label>Number Of Restaurants:</label> <input type="number" name="NumberOfRestaurants" value="@Model.SelectedResort.NumberOfRestaurants" />
     </div>
     <div>
-        <input type="submit" value="Update Resort" />
+        <input type="submit" class="submit_btn" value="Update Resort" />
     </div>
 
 

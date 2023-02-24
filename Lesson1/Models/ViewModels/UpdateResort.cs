@@ -9,7 +9,7 @@ namespace Lesson1.Models.ViewModels
     {
         public ResortDto SelectedResort { get; set; }
 
-        public IEnumerable<TrailDto> ResortOptions { get; set; }    
+        //public IEnumerable<ResortDto> ResortOptions { get; set; }    
 
         
     }

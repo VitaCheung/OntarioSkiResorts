@@ -4,23 +4,78 @@
     ViewBag.Title = "View";
 }
 
-<a href="/Resort/List">Back to Resort list</a>
-<h2>@Model.SelectedResort.ResortName </h2>
-<div>Address: @Model.SelectedResort.address</div>
-<div>Description: @Model.SelectedResort.description</div>
+<h1><a class="back_btn" href="/Resort/List"><< </a></h1>
 
-<a href="/Resort/Edit/@Model.SelectedResort.ResortId">Update</a> 
-<a style="color:#ab2020;" href="/Resort/DeleteConfirm/@Model.SelectedResort.ResortId">Delete</a> 
+<h2>@Model.SelectedResort.ResortName </h2>
+<p><b>Address:</b> @Model.SelectedResort.address</p>
+<p><b>Description:</b> @Model.SelectedResort.description</p>
+<p><b>Number Of Trails Open:</b> @Model.SelectedResort.NumberOfTrailsOpen</p>
+<p><b>Contact:</b> @Model.SelectedResort.Contact</p>
+<p><b>Wheelchair Accessible:</b> @Model.SelectedResort.WheelchairAccessible</p>
+<p><b>Number Of Restaurants:</b> @Model.SelectedResort.NumberOfRestaurants</p>
+
+<a class="update_btn" href="/Resort/Edit/@Model.SelectedResort.ResortId">Update</a> 
+<a class="delete_btn" style="color:#ab2020;" href="/Resort/DeleteConfirm/@Model.SelectedResort.ResortId">Delete</a> 
 
 <div>
-    <h2>Trails for @Model.SelectedResort.ResortName:</h2>
+    <h2>Trails:</h2>
     @foreach (var trail in Model.RelatedTrail)
     {
 
-        @trail.BeginnerTrails<br />
-        @trail.IntermediateTrails<br />
-        @trail.AdvancedTrails<br />
-        @trail.TerrainPark<br />
-        @trail.TubingPark<br />
+       <p><b>Beginner Trails:</b> @trail.BeginnerTrails </p>
+       <p><b>Intermediate Trails:</b> @trail.IntermediateTrails </p>
+       <p><b>Advanced Trails:</b> @trail.AdvancedTrails </p>
+       <p><b>Terrain Park:</b> @trail.TerrainPark</p>
+       <p><b>Tubing Park:</b> @trail.TubingPark</p>
     }
+</div>
+
+<div>
+    <h2>Price list:</h2>
+    @foreach (var price in Model.RelatedPrice)
+     {
+        <table id="pricelist">
+            <tr>
+                <th>Ticket type</th>
+                <th>Price (CAD)</th>
+            </tr>
+            <tr>
+                <td>DAY1Hour</td>
+                <td>@price.DAY1Hour</td>
+            </tr>
+            <tr>
+                <td>DAY2Hours</td>
+                <td>@price.DAY2Hours</td>
+            </tr>
+            <tr>
+                <td>DAY3Hours</td>
+                <td>@price.DAY3Hours</td>
+            </tr>
+            <tr>
+                <td>DAY4Hours</td>
+                <td>@price.DAY4Hours</td>
+            </tr>
+            <tr>
+                <td>NIGHT1Hour</td>
+                <td>@price.NIGHT1Hour</td>
+            </tr>
+            <tr>
+                <td>NIGHT2Hours</td>
+                <td>@price.NIGHT2Hours</td>
+            </tr>
+            <tr>
+                <td>NIGHT3Hours</td>
+                <td>@price.NIGHT3Hours</td>
+            </tr>
+            <tr>
+                <td>NIGHT4Hours</td>
+                <td>@price.NIGHT4Hours</td>
+            </tr>
+        </table>
+        
+                 
+
+     }
+
+    
 </div>

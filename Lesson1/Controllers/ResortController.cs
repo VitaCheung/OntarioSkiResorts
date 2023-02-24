@@ -56,17 +56,26 @@ namespace Lesson1.Controllers
             Debug.WriteLine("The response code is ");
             Debug.WriteLine(response.StatusCode);
 
-            ResortDto selectedResort = response.Content.ReadAsAsync<ResortDto>().Result;
+            ResortDto SelectedResort = response.Content.ReadAsAsync<ResortDto>().Result;
             Debug.WriteLine("resort received: ");
-            Debug.WriteLine(selectedResort.ResortName);
+            Debug.WriteLine(SelectedResort.ResortName);
 
-            ViewModel.SelectedResort = selectedResort;
+            ViewModel.SelectedResort = SelectedResort;
 
+            //Show trails related to this resort
             url = "traildata/listtrailsforresort/" + id;
             response = client.GetAsync(url).Result;
             IEnumerable<TrailDto> RelatedTrail = response.Content.ReadAsAsync<IEnumerable<TrailDto>>().Result;
 
             ViewModel.RelatedTrail = RelatedTrail;
+
+
+            //Show prices related to this resort
+            url = "pricedata/listpricesforresort/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<PriceDto> RelatedPrice = response.Content.ReadAsAsync<IEnumerable<PriceDto>>().Result;
+
+            ViewModel.RelatedPrice = RelatedPrice;
 
 
             return View(ViewModel);
@@ -127,8 +136,8 @@ namespace Lesson1.Controllers
             UpdateResort ViewModel = new UpdateResort();
             string url = "resortdata/findresort/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            ResortDto selectedResort = response.Content.ReadAsAsync<ResortDto>().Result;
-            ViewModel.SelectedResort = selectedResort;
+            ResortDto SelectedResort = response.Content.ReadAsAsync<ResortDto>().Result;
+            ViewModel.SelectedResort = SelectedResort;
             
             return View(ViewModel);
             
@@ -136,10 +145,10 @@ namespace Lesson1.Controllers
 
         // POST: Resort/Update/5
         [HttpPost]
-        public ActionResult Edit(int id, Resort resort)
+        public ActionResult Update(int id, Resort Resort)
         {
-            string url = "resortdata/updateresort" + id; 
-            string jsonpayload = jss.Serialize(resort);    
+            string url = "resortdata/updateresort/" + id; 
+            string jsonpayload = jss.Serialize(Resort);    
 
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -161,18 +170,18 @@ namespace Lesson1.Controllers
         // GET: Resort/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "resortdata/findresort" + id;           
+            string url = "resortdata/findresort/" + id;           
             HttpResponseMessage response = client.GetAsync(url).Result;
-            ResortDto selectedResort = response.Content.ReadAsAsync<ResortDto>().Result;
+            ResortDto SelectedResort = response.Content.ReadAsAsync<ResortDto>().Result;
 
-            return View(selectedResort);
+            return View(SelectedResort);
         }
 
         // POST: Resort/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "resortdata/deleteresort" + id;
+            string url = "resortdata/deleteresort/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
