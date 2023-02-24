@@ -8,16 +8,16 @@
 
 <form action="/Resort/Update/@Model.SelectedResort.ResortId" method="POST">
     <div>    
-        <label>Resort Id:</label><input type="number" name="ResortId" value="@Model.SelectedResort.ResortId" />
+        <label>Resort Id: @Model.SelectedResort.ResortId
     </div>
     <div>
         <label>Name:</label> <input type="text" name="ResortName" value="@Model.SelectedResort.ResortName" />
     </div>
     <div>
-        <label>Address:</label> <input type="text" name="address" value="@Model.SelectedResort.address" />
+        <label>Address:</label> <textarea name="address"> @Model.SelectedResort.address </textarea> 
     </div>
     <div>
-        <label>Description:</label> <input type="text" name="description" value="@Model.SelectedResort.description" />
+        <label>Description:</label> <textarea name="description"> @Model.SelectedResort.description </textarea>
     </div>
     <div>
         <label>Number Of Trails Open:</label> <input type="text" name="NumberOfTrailsOpen" value="@Model.SelectedResort.NumberOfTrailsOpen" />
