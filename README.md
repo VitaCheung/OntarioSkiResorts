@@ -22,7 +22,7 @@ Usage Storyboard:
 - Run API commands through CURL to create new resort!
 
 # Video description
-{https://youtu.be/POEODSKV5Wo}
+{https://youtu.be/Chq6TFHvZIg}
 
 
 
