@@ -9,19 +9,33 @@
 
 <div id="container">
     @foreach (var Trail in Model)
-    {<div class="ResortTrail">
+    {
+        
+        <div class="ResortTrail">
+            <div class="trailMap">
+                @{
+                    string imageurl = "/Content/img/trailPic/default.jpg";
+                    if (Trail.TrailHasPic)
+                    {
+                        imageurl = "/Content/img/trailPic/" + Trail.TrailId + "." + Trail.PicExtension;
+                    }
+                }
+                <div><img style="display:block; max-width:100%;" alt="@Trail.ResortName" src="@imageurl" /></div>
 
-        <h2>@Trail.ResortName</h2>
-        <p>Resort Id: @Trail.ResortId </p>
+            </div>
 
-        <div>Beginner Trails: @Trail.BeginnerTrails</div>
-        <div>Intermediate Trails: @Trail.IntermediateTrails</div>
-        <div>Advanced Trails: @Trail.AdvancedTrails</div>
-        <div>Terrain Parks: @Trail.TerrainPark</div>
-        <div>Tubing Parks: @Trail.TubingPark</div>
+            <h2>@Trail.ResortName</h2>
+            <p>Resort Id: @Trail.ResortId </p>
 
-        <a class="details_btn" href="/Trail/Details/@Trail.TrailId"> Details </a>
-     </div>
+            <div>Beginner Trails: @Trail.BeginnerTrails</div>
+            <div>Intermediate Trails: @Trail.IntermediateTrails</div>
+            <div>Advanced Trails: @Trail.AdvancedTrails</div>
+            <div>Terrain Parks: @Trail.TerrainPark</div>
+            <div>Tubing Parks: @Trail.TubingPark</div>
+
+            <a class="details_btn" href="/Trail/Details/@Trail.TrailId"> Details </a>
+        </div>
+
     }
 
 </div>

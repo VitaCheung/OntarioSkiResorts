@@ -5,16 +5,17 @@
 }
 <h1><a class="back_btn" href="/Trail/List"><< </a></h1>
 <h2>Update Trails</h2>
+<p> @Model.SelectedTrail.ResortName</p>
 
-<div>
-    <p><label>TrailId:</label> @Model.SelectedTrail.TrailId</p>
-</div>
-<div>
-    <p><label>Resort:</label> @Model.SelectedTrail.ResortName</p>
-</div>
 
 <form action="/Trail/Update/@Model.SelectedTrail.TrailId" method="POST" enctype="multipart/form-data">
-    
+
+    <div style="display:none;">
+        <label>Trail Id:</label><input type="number" name="TrailId" value="@Model.SelectedTrail.TrailId" />
+    </div>
+    <div style="display:none;">
+        <label>Resort Id:</label><input type="number" name="ResortId" value="@Model.SelectedTrail.ResortId" />
+    </div>
     <div>
         <label>Beginner Trails:</label> <input type="number" name="BeginnerTrails" value="@Model.SelectedTrail.BeginnerTrails" />
     </div>
@@ -29,6 +30,16 @@
     </div>
     <div>
         <label>Tubing Parks:</label> <input type="number" name="TubingPark" value="@Model.SelectedTrail.TubingPark" />
+    </div>
+    <div>
+        <label>Trail Map include:</label> <input type="checkbox" name="TrailHasPic" value="true" />
+    </div>
+
+    <div class="uploadPic">
+        <label>Trail Map:</label><input type="file" name="TrailPic" />
+    </div>
+    <div>
+        <label>Photo extension:</label> <input type="text" name="PicExtension" value="@Model.SelectedTrail.PicExtension" />
     </div>
 
     <div>

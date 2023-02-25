@@ -97,11 +97,11 @@ textarea {
     background-size: cover;
 }
 
-h2 a {
+h2 a, .link {
     color: #4cc9f0;
 }
 
-h2 a:hover {
+h2 a:hover, .link:hover {
     color: #f72585;
 }
 
@@ -193,7 +193,7 @@ input, .submit_btn {
     border: white solid 1px;
     padding: 30px;
     width: 85%;
-    margin: 1.5em 1.5em 0 0;
+    margin: 30px 10px 0px 0px;
     
 }
 textarea {

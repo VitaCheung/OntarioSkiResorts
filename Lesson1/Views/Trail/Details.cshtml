@@ -17,4 +17,14 @@
 <a class="update_btn" href="/Trail/Edit/@Model.SelectedTrail.TrailId">Update </a>
 <a class="delete_btn" style="color:#ab2020;" href="/Trail/DeleteConfirm/@Model.SelectedTrail.TrailId">Delete</a>
 
+<div class="trailMap">
+    @{
+        string imageurl = "/Content/img/trailPic/default.jpg";
+        if (Model.SelectedTrail.TrailHasPic)
+        {
+            imageurl = "/Content/img/trailPic/" + Model.SelectedTrail.TrailId + "." + Model.SelectedTrail.PicExtension;
+        }
+    }
+    <div><img style="display:block; max-width:100%;" alt="@Model.SelectedTrail.ResortName" src="@imageurl" /></div>
 
+</div>

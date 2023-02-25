@@ -19,6 +19,8 @@ namespace Lesson1.Models
         public bool WheelchairAccessible { get; set; }  
         public int NumberOfRestaurants { get; set; }    
 
+        public string Link { get; set; }
+
 
 
     }
@@ -32,5 +34,7 @@ namespace Lesson1.Models
         public string Contact { get; set; }
         public bool WheelchairAccessible { get; set; }
         public int NumberOfRestaurants { get; set; }
+
+        public string Link { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace Lesson1.Controllers
             //communicate with resort data api to retrieve a list of resorts
             //curl https://localhost:44340/api/resortdata/listresorts
 
-            
+
             string url = "resortdata/listresorts";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -38,7 +38,7 @@ namespace Lesson1.Controllers
             IEnumerable<ResortDto> resorts = response.Content.ReadAsAsync<IEnumerable<ResortDto>>().Result;
             //Debug.WriteLine("Number of resorts received: ");
             //Debug.WriteLine(resorts.Count());
-            
+
             return View(resorts);
         }
 
@@ -49,7 +49,7 @@ namespace Lesson1.Controllers
             //communicate with resort data api to retrieve a resort
             //curl https://localhost:44340/api/resortdata/findresort/{id}
 
-            
+
             string url = "resortdata/findresort/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -108,7 +108,7 @@ namespace Lesson1.Controllers
             //curl -H "Content-Type:application/json" -d @resort.json https://localhost:44340/api/resortdata/addresort
             string url = "resortdata/addresort";
 
-            
+
             string jsonpayload = jss.Serialize(resort);
 
             Debug.WriteLine(jsonpayload);
@@ -126,7 +126,7 @@ namespace Lesson1.Controllers
                 return RedirectToAction("Error");
             }
 
-            
+
 
         }
 
@@ -138,17 +138,17 @@ namespace Lesson1.Controllers
             HttpResponseMessage response = client.GetAsync(url).Result;
             ResortDto SelectedResort = response.Content.ReadAsAsync<ResortDto>().Result;
             ViewModel.SelectedResort = SelectedResort;
-            
+
             return View(ViewModel);
-            
+
         }
 
         // POST: Resort/Update/5
         [HttpPost]
         public ActionResult Update(int id, Resort Resort)
         {
-            string url = "resortdata/updateresort/" + id; 
-            string jsonpayload = jss.Serialize(Resort);    
+            string url = "resortdata/updateresort/" + id;
+            string jsonpayload = jss.Serialize(Resort);
 
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -164,13 +164,13 @@ namespace Lesson1.Controllers
             {
                 return RedirectToAction("Error");
             }
-           
+
         }
 
         // GET: Resort/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "resortdata/findresort/" + id;           
+            string url = "resortdata/findresort/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             ResortDto SelectedResort = response.Content.ReadAsAsync<ResortDto>().Result;
 
@@ -185,10 +185,10 @@ namespace Lesson1.Controllers
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
-            
+
             if (response.IsSuccessStatusCode)
             {
-                
+
                 return RedirectToAction("List");
             }
             else

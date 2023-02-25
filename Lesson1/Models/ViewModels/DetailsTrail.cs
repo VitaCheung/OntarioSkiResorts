@@ -9,6 +9,6 @@ namespace Lesson1.Models.ViewModels
     {
         public TrailDto SelectedTrail { get; set; }
 
-        public ResortDto RelatedResort { get; set; }  
+        //public ResortDto RelatedResort { get; set; }  
     }
 }

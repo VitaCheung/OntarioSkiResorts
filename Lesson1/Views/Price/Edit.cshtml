@@ -5,17 +5,19 @@
 
 <h1><a class="back_btn" href="/Price/List"><< </a></h1>
 <h2>Update Price</h2>
+<p>@Model.SelectedPrice.ResortName</p>
 
 
-<div>
-    <p><label>PriceId:</label> @Model.SelectedPrice.PriceId</p>
-</div>
-<div>
-    <p><label>Resort:</label> @Model.SelectedPrice.ResortName</p>
-</div>
+
 
 <form action="/Price/Update/@Model.SelectedPrice.PriceId" method="POST">
-    
+    <div style="display:none;">
+        <label>PriceId:</label> <input type="number" name="PriceId" value="@Model.SelectedPrice.PriceId" />
+    </div>
+    <div style="display:none;">
+        <label>ResortId:</label> <input type="number" name="ResortId" value="@Model.SelectedPrice.ResortId" />
+    </div>
+
     <div>
         <label>DAY 1 hour:</label> <input type="number" step="0.01" name="DAY1Hour" value="@Model.SelectedPrice.DAY1Hour" />
     </div>

@@ -23,7 +23,10 @@ namespace Lesson1.Models
         public int AdvancedTrails { get; set; }
         public int TerrainPark { get; set; }
         public int TubingPark { get; set; }
-       
+
+        public bool TrailHasPic { get; set; }
+        public string PicExtension { get; set; }
+
     }
 
     public class TrailDto
@@ -39,6 +42,9 @@ namespace Lesson1.Models
         public int AdvancedTrails { get; set; }
         public int TerrainPark { get; set; }
         public int TubingPark { get; set; }
-        
+
+        public bool TrailHasPic { get; set; }
+        public string PicExtension { get; set; }
+
     }
 }

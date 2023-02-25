@@ -17,11 +17,7 @@ namespace Lesson1.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //public int ResortId { get; private set; }
-        //public string ResortName { get; private set; }
-        //public string address { get; private set; }
-        //public string description { get; private set; }
-
+        
         // GET: api/ResortData/ListResorts
         [HttpGet]
         [ResponseType(typeof(ResortDto))]
@@ -39,7 +35,8 @@ namespace Lesson1.Controllers
                 NumberOfTrailsOpen = a.NumberOfTrailsOpen,
                 Contact = a.Contact,
                 WheelchairAccessible = a.WheelchairAccessible,
-                NumberOfRestaurants = a.NumberOfRestaurants
+                NumberOfRestaurants = a.NumberOfRestaurants,
+                Link = a.Link
 
             }));
             return Ok(ResortDtos);
@@ -61,7 +58,8 @@ namespace Lesson1.Controllers
                 NumberOfTrailsOpen = Resort.NumberOfTrailsOpen,
                 Contact = Resort.Contact,
                 WheelchairAccessible = Resort.WheelchairAccessible,
-                NumberOfRestaurants = Resort.NumberOfRestaurants
+                NumberOfRestaurants = Resort.NumberOfRestaurants,
+                Link = Resort.Link
 
             };
             if (Resort == null)

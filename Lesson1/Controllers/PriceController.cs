@@ -33,7 +33,7 @@ namespace Lesson1.Controllers
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             IEnumerable<PriceDto> prices = response.Content.ReadAsAsync<IEnumerable<PriceDto>>().Result;
-            
+
 
             return View(prices);
         }
@@ -80,7 +80,7 @@ namespace Lesson1.Controllers
             string url = "resortdata/listresorts";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<ResortDto> ResortOptions = response.Content.ReadAsAsync<IEnumerable<ResortDto>>().Result;
-            
+
             return View(ResortOptions);
         }
 
