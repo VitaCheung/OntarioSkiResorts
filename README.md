@@ -3,6 +3,10 @@ Usage Storyboard:
 
 ![UsageStoryboard](https://user-images.githubusercontent.com/113631428/221332136-e306eb9c-1f97-4ce0-acb7-27877ce9b7ae.jpg)
 
+![OntarioSkiResortsPhoto](https://user-images.githubusercontent.com/113631428/234671367-44904748-21da-4c7f-a2b3-55875798c75e.jpg)
+# Video description
+{https://youtu.be/Chq6TFHvZIg}
+
 # Features
 - Read the information of different ski resorts in Ontario 
 - Compare the prices of the lift tickets
@@ -21,8 +25,7 @@ Usage Storyboard:
 - Check that the database is created using (View > SQL Server Object Explorer > MSSQLLocalDb > ..)
 - Run API commands through CURL to create new resort!
 
-# Video description
-{https://youtu.be/Chq6TFHvZIg}
+
 
 
 
