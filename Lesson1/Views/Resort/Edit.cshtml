@@ -7,17 +7,17 @@
 <h2>Edit</h2>
 
 <form action="/Resort/Update/@Model.SelectedResort.ResortId" method="POST">
-    <div>    
+    <div style="display:none;">
         <label>Resort Id:</label><input type="number" name="ResortId" value="@Model.SelectedResort.ResortId" />
     </div>
     <div>
         <label>Name:</label> <input type="text" name="ResortName" value="@Model.SelectedResort.ResortName" />
     </div>
     <div>
-        <label>Address:</label> <input type="text" name="address" value="@Model.SelectedResort.address" />
+        <label>Address:</label> <textarea name="address"> @Model.SelectedResort.address </textarea>
     </div>
     <div>
-        <label>Description:</label> <input type="text" name="description" value="@Model.SelectedResort.description" />
+        <label>Description:</label> <textarea name="description"> @Model.SelectedResort.description </textarea>
     </div>
     <div>
         <label>Number Of Trails Open:</label> <input type="text" name="NumberOfTrailsOpen" value="@Model.SelectedResort.NumberOfTrailsOpen" />
@@ -26,10 +26,13 @@
         <label>Contact:</label> <input type="text" name="Contact" value="@Model.SelectedResort.Contact" />
     </div>
     <div>
-        <label>Wheelchair Accessible:</label> <input type="checkbox" name="WheelchairAccessible"  value="true"/>
+        <label>Wheelchair Accessible:</label> <input type="checkbox" name="WheelchairAccessible" value="true" />
     </div>
     <div>
         <label>Number Of Restaurants:</label> <input type="number" name="NumberOfRestaurants" value="@Model.SelectedResort.NumberOfRestaurants" />
+    </div>
+    <div>
+        <label>Link of website:</label> <input type="text" name="Link" value="@Model.SelectedResort.Link" />
     </div>
     <div>
         <input type="submit" class="submit_btn" value="Update Resort" />

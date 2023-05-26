@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Web;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
@@ -12,7 +14,6 @@ using System.Web.Http.Description;
 using Lesson1.Models;
 using Microsoft.Owin.BuilderProperties;
 using System.Diagnostics;
-using Lesson1.Migrations;
 using Trail = Lesson1.Models.Trail;
 
 
@@ -21,19 +22,9 @@ namespace Lesson1.Controllers
 {
     public class TrailDataController : ApiController
     {
-        //public int TrailId { get; set; }
-
-        //public int ResortId { get; set; }
-
-        //public int BeginnerTrails { get; set; }
-        //public int IntermediateTrails { get; set; }
-        //public int AdvancedTrails { get; set; }
-        //public int TerrainPark { get; set; }
-        //public int TubingPark { get; set; }
-        
 
         private ApplicationDbContext db = new ApplicationDbContext();
-        
+
 
         // GET: api/TrailData/ListTrail
         [HttpGet]
@@ -44,7 +35,7 @@ namespace Lesson1.Controllers
             List<TrailDto> TrailDtos = new List<TrailDto>();
 
             Trails.ForEach(t => TrailDtos.Add(new TrailDto()
-            {   
+            {
                 TrailId = t.TrailId,
                 ResortId = t.ResortId,
                 ResortName = t.Resort.ResortName,
@@ -52,15 +43,17 @@ namespace Lesson1.Controllers
                 IntermediateTrails = t.IntermediateTrails,
                 AdvancedTrails = t.AdvancedTrails,
                 TerrainPark = t.TerrainPark,
-                TubingPark = t.TubingPark
-               
+                TubingPark = t.TubingPark,
+                TrailHasPic = t.TrailHasPic,
+                PicExtension = t.PicExtension
+
             }));
             Debug.WriteLine(TrailDtos);
             return Ok(TrailDtos);
         }
 
         [HttpGet]
-        [ResponseType(typeof(TrailDto))]      
+        [ResponseType(typeof(TrailDto))]
         public IHttpActionResult ListTrailsForResort(int id)
         {
             List<Trail> Trails = db.Trails.Where(t => t.ResortId == id).ToList();
@@ -74,7 +67,9 @@ namespace Lesson1.Controllers
                 IntermediateTrails = t.IntermediateTrails,
                 AdvancedTrails = t.AdvancedTrails,
                 TerrainPark = t.TerrainPark,
-                TubingPark = t.TubingPark
+                TubingPark = t.TubingPark,
+                TrailHasPic = t.TrailHasPic,
+                PicExtension = t.PicExtension
 
             }));
             return Ok(TrailDtos);
@@ -86,7 +81,6 @@ namespace Lesson1.Controllers
         public IHttpActionResult FindTrail(int id)
         {
             Trail Trail = db.Trails.Find(id);
-            //Resort Resort = (Resort)db.Resorts.Where(a => a.ResortId == id);
             TrailDto TrailDto = new TrailDto()
             {
                 TrailId = Trail.TrailId,
@@ -97,7 +91,9 @@ namespace Lesson1.Controllers
                 AdvancedTrails = Trail.AdvancedTrails,
                 TerrainPark = Trail.TerrainPark,
                 TubingPark = Trail.TubingPark,
-  
+                TrailHasPic = Trail.TrailHasPic,
+                PicExtension = Trail.PicExtension
+
 
             };
             if (Trail == null)
@@ -124,6 +120,9 @@ namespace Lesson1.Controllers
             }
 
             db.Entry(trail).State = EntityState.Modified;
+            // Picture update is handled by another method
+            db.Entry(trail).Property(t => t.TrailHasPic).IsModified = false;
+            db.Entry(trail).Property(t => t.PicExtension).IsModified = false;
 
             try
             {
@@ -143,6 +142,80 @@ namespace Lesson1.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
+        // POST: api/TrailData/UploadTrailPic/3
+        [HttpPost]
+        public IHttpActionResult UploadTrailPic(int id)
+        {
+
+            bool haspic = false;
+            string picextension;
+            if (Request.Content.IsMimeMultipartContent())
+            {
+                Debug.WriteLine("Received multipart form data.");
+
+                int numfiles = HttpContext.Current.Request.Files.Count;
+                Debug.WriteLine("Files Received: " + numfiles);
+
+                //Check if a file is posted
+                if (numfiles == 1 && HttpContext.Current.Request.Files[0] != null)
+                {
+                    var trailPic = HttpContext.Current.Request.Files[0];
+                    //Check if the file is empty
+                    if (trailPic.ContentLength > 0)
+                    {
+                        //establish valid file types (can be changed to other file extensions if desired!)
+                        var valtypes = new[] { "jpeg", "jpg", "png", "gif" };
+                        var extension = Path.GetExtension(trailPic.FileName).Substring(1);
+                        //Check the extension of the file
+                        if (valtypes.Contains(extension))
+                        {
+                            try
+                            {
+                                //file name is the id of the image
+                                string fn = id + "." + extension;
+
+                                //get a direct file path to ~/Content/animals/{id}.{extension}
+                                string path = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/img/trailPic/"), fn);
+
+                                //save the file
+                                trailPic.SaveAs(path);
+
+                                //if these are all successful then we can set these fields
+                                haspic = true;
+                                picextension = extension;
+
+                                //Update the animal haspic and picextension fields in the database
+                                Trail SelectedTrail = db.Trails.Find(id);
+                                SelectedTrail.TrailHasPic = haspic;
+                                SelectedTrail.PicExtension = extension;
+                                db.Entry(SelectedTrail).State = EntityState.Modified;
+
+                                db.SaveChanges();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine("Image was not saved successfully.");
+                                Debug.WriteLine("Exception:" + ex);
+                                return BadRequest();
+                            }
+                        }
+                    }
+
+                }
+
+                return Ok();
+            }
+            else
+            {
+                //not multipart form data
+                return BadRequest();
+
+            }
+
+        }
+
 
         // POST: api/TrailData/AddTrail
         [ResponseType(typeof(Trail))]
@@ -169,6 +242,17 @@ namespace Lesson1.Controllers
             if (trail == null)
             {
                 return NotFound();
+            }
+
+            if (trail.TrailHasPic && trail.PicExtension != "")
+            {
+                //also delete image from path
+                string path = HttpContext.Current.Server.MapPath("~/Content/img/trailPic/" + id + "." + trail.PicExtension);
+                if (System.IO.File.Exists(path))
+                {
+                    Debug.WriteLine("File exists... preparing to delete!");
+                    System.IO.File.Delete(path);
+                }
             }
 
             db.Trails.Remove(trail);

@@ -221,6 +221,10 @@
     <Compile Include="Migrations\202301270204241_Contact.designer.cs">
       <DependentUpon>202301270204241_Contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302241733211_trailPic.cs" />
+    <Compile Include="Migrations\202302241733211_trailPic.designer.cs">
+      <DependentUpon>202302241733211_trailPic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -248,6 +252,16 @@
     <Content Include="Content\img\resort.jpg" />
     <Content Include="Content\img\SkiHills.jpg" />
     <Content Include="Content\img\trail.jpg" />
+    <Content Include="Content\img\trailPic\10.hockley.jpg" />
+    <Content Include="Content\img\trailPic\1.lakeridge.jpg" />
+    <Content Include="Content\img\trailPic\19.mountSt.jpg" />
+    <Content Include="Content\img\trailPic\2.bluemountain.jpg" />
+    <Content Include="Content\img\trailPic\3.dagmar.jpg" />
+    <Content Include="Content\img\trailPic\8.caledon.jpg" />
+    <Content Include="Content\img\trailPic\9.glenEden.jpg" />
+    <Content Include="Content\img\trailPic\11.horseshoe.jpg" />
+    <Content Include="Content\img\trailPic\northyork.jpg" />
+    <Content Include="Content\img\trailPic\default.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -362,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301270204241_Contact.resx">
       <DependentUpon>202301270204241_Contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302241733211_trailPic.resx">
+      <DependentUpon>202302241733211_trailPic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

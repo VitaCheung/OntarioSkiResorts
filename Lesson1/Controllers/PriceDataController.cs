@@ -20,18 +20,7 @@ namespace Lesson1.Controllers
     public class PriceDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        //public int PriceId { get; private set; }
-        //public int ResortId { get; private set; }
-
-        //public decimal DAY1Hour { get; private set; }
-        //public decimal DAY2Hours { get; private set; }
-        //public decimal DAY3Hours { get; private set; }
-        //public decimal DAY4Hours { get; private set; }
-
-        //public decimal NIGHT1Hour { get; private set; }
-        //public decimal NIGHT2Hours { get; private set; }
-        //public decimal NIGHT3Hours { get; private set; }
-        //public decimal NIGHT4Hours { get; private set; }
+        
 
         // GET: api/PriceData/ListPrice
         [HttpGet]
@@ -111,7 +100,7 @@ namespace Lesson1.Controllers
 
             return Ok(PriceDto);
         }
-        
+
         // POST: api/PriceData/UpdatePrice/5
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -164,7 +153,7 @@ namespace Lesson1.Controllers
             return CreatedAtRoute("DefaultApi", new { id = price.PriceId }, price);
         }
 
-       
+
         // POST: api/PriceData/DeletePrice/5
         [ResponseType(typeof(Price))]
         [HttpPost]

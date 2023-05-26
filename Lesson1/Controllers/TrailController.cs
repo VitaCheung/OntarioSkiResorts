@@ -50,12 +50,7 @@ namespace Lesson1.Controllers
             TrailDto SelectedTrail = response.Content.ReadAsAsync<TrailDto>().Result;
             ViewModel.SelectedTrail = SelectedTrail;
 
-            //Show the related resort
-            //url = "resortdata/findresort/" + id;
-            //response = client.GetAsync(url).Result;
-            //ResortDto RelatedResort = response.Content.ReadAsAsync <ResortDto>().Result;
-            
-            //ViewModel.RelatedResort = RelatedResort;
+
 
 
             return View(ViewModel);
@@ -73,8 +68,8 @@ namespace Lesson1.Controllers
             //string url = "traildata/listtrail";
             string url = "resortdata/listresorts";
             HttpResponseMessage response = client.GetAsync(url).Result;
-            IEnumerable<ResortDto> ResortOptions = response.Content.ReadAsAsync<IEnumerable<ResortDto>>().Result; 
-            
+            IEnumerable<ResortDto> ResortOptions = response.Content.ReadAsAsync<IEnumerable<ResortDto>>().Result;
+
             return View(ResortOptions);
         }
 
@@ -82,9 +77,9 @@ namespace Lesson1.Controllers
         [HttpPost]
         public ActionResult Create(Trail trail)
         {
-            Debug.WriteLine("the json payload is: ");         
+            Debug.WriteLine("the json payload is: ");
             //Add new trail details into the system using the API
-            
+
             string url = "traildata/addtrail";
 
 
@@ -132,8 +127,8 @@ namespace Lesson1.Controllers
         }
 
         // POST: Trail/Update/5
-        [HttpPost]      
-        public ActionResult Update(int id, Trail trail)
+        [HttpPost]
+        public ActionResult Update(int id, Trail trail, HttpPostedFileBase TrailPic)
         {
             string url = "traildata/updatetrail/" + id;
             string jsonpayload = jss.Serialize(trail);
@@ -144,8 +139,21 @@ namespace Lesson1.Controllers
             HttpResponseMessage response = client.PostAsync(url, content).Result;
             Debug.WriteLine(content);
 
-            if (response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode && TrailPic != null)
             {
+                //Updating the picture as a separate request
+                url = "traildata/UploadTrailPic/" + id;
+
+                MultipartFormDataContent requestcontent = new MultipartFormDataContent();
+                HttpContent imagecontent = new StreamContent(TrailPic.InputStream);
+                requestcontent.Add(imagecontent, "TrailPic", TrailPic.FileName);
+                response = client.PostAsync(url, requestcontent).Result;
+
+                return RedirectToAction("List");
+            }
+            else if (response.IsSuccessStatusCode)
+            {
+                //No image upload, but update still successful
                 return RedirectToAction("List");
             }
             else
@@ -154,6 +162,7 @@ namespace Lesson1.Controllers
             }
 
         }
+
 
         // GET: Trail/Delete/5
         public ActionResult DeleteConfirm(int id)
